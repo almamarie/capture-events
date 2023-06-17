@@ -16,3 +16,32 @@
   display: flex;
   gap: 2rem;
 }
+
+/* .section {
+} */
+
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 9.7rem;
+}
+
+.hero-text {
+  width: 60.4rem;
+  display: flex;
+  flex-direction: column;
+
+  gap: 2.7rem;
+}
+
+.hero-text p {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.hero-img {
+  width: 62.3rem;
+  height: 49.9rem;
+}
