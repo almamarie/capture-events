@@ -11,6 +11,8 @@
   --color-white: #fff;
   --color-black: #000;
 
+  --border-color: #d7e0d6;
+
   /* border radii */
   --border-radius-lg: 25px;
   --border-radius-m: 10px;
@@ -41,11 +43,14 @@ html {
 }
 
 body {
-  width: 93vw;
-  margin: 0 auto;
   background-color: var(--color-white);
   position: relative;
   font-size: 1.8rem;
+}
+
+.body-main {
+  max-width: 93vw;
+  margin: 0 auto;
 }
 
 /* General styles */

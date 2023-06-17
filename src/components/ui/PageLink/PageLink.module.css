@@ -1,18 +1,26 @@
-.link {
-  background-color: var(--color-primary-tint);
+.link--background,
+.link--no-background {
   padding: 0.5rem 1rem;
   border-radius: var(--border-radius-sm);
-  color: var(--color-black);
+
   font-size: 1.6rem;
 
   text-decoration: none;
 
   font-weight: normal;
+}
 
+.link--background {
+  background-color: var(--color-primary-tint);
+  color: var(--color-black);
   border: 1px solid var(--color-primary);
 }
 
-.link:hover {
+.link--background:hover {
   background-color: transparent;
   color: var(--color-primary-shade);
 }
+
+/* .link--no-background {
+  border: 1px solid var(--color-primary);
+} */
