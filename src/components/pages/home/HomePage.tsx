@@ -4,6 +4,7 @@ import styles from "./HomePage.module.css";
 import Hero from "./Hero";
 import Header from "./Header";
 import Summary from "./Summary";
+import EventOrganiser from "./EventOrganiser";
 
 const HomePage = () => {
   return (
@@ -12,6 +13,7 @@ const HomePage = () => {
       <main className={`${styles.wrapper} body-main`}>
         <Hero />
         <Summary />
+        <EventOrganiser />
       </main>
     </div>
   );
