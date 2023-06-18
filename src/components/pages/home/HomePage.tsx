@@ -5,6 +5,7 @@ import Hero from "./Hero";
 import Header from "./Header";
 import Summary from "./Summary";
 import EventOrganiser from "./EventOrganiser";
+import Photographer from "./Photographer";
 
 const HomePage = () => {
   return (
@@ -14,6 +15,7 @@ const HomePage = () => {
         <Hero />
         <Summary />
         <EventOrganiser />
+        <Photographer />
       </main>
     </div>
   );
