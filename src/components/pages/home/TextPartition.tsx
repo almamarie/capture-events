@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./TextPartition.module.css";
 
 export type TextPartitionType = {
-  iconType: "free" | "group" | "organise" | "register" | "share";
+  iconType: "free" | "group" | "organise" | "register" | "share" | "access";
   heading: string;
   text: string;
 };
@@ -98,6 +98,18 @@ const icons = {
         strokeLinejoin="round"
         d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z"
       />
+    </svg>
+  ),
+
+  access: (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="48"
+      viewBox="0 -960 960 960"
+      width="48"
+      className={styles.icon}
+    >
+      <path d="M480-80q-85 0-158-30.5T195-195q-54-54-84.5-127T80-480q0-84 30.5-157T195-764q54-54 127-85t158-31q75 0 140 24t117 66l-43 43q-44-35-98-54t-116-19q-145 0-242.5 97.5T140-480q0 145 97.5 242.5T480-140q145 0 242.5-97.5T820-480q0-30-4.5-58.5T802-594l46-46q16 37 24 77t8 83q0 85-31 158t-85 127q-54 54-127 84.5T480-80Zm-59-218L256-464l45-45 120 120 414-414 46 45-460 460Z" />
     </svg>
   ),
 };

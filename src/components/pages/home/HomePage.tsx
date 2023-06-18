@@ -6,6 +6,7 @@ import Header from "./Header";
 import Summary from "./Summary";
 import EventOrganiser from "./EventOrganiser";
 import Photographer from "./Photographer";
+import Partygoers from "./Partygoers";
 
 const HomePage = () => {
   return (
@@ -16,6 +17,7 @@ const HomePage = () => {
         <Summary />
         <EventOrganiser />
         <Photographer />
+        <Partygoers />
       </main>
     </div>
   );
