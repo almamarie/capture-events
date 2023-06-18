@@ -1,0 +1,12 @@
+.small-heading {
+  color: var(--text-color--dark);
+}
+
+.partition {
+  display: flex;
+  gap: 1.6rem;
+}
+
+.icon {
+  width: 3.2rem;
+}
