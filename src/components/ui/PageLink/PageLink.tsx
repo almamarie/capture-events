@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./PageLink.module.css";
+import Link from "next/link";
 const PageLink: React.FC<{
   children: React.ReactNode;
   url: string;
@@ -7,11 +8,14 @@ const PageLink: React.FC<{
 }> = (props) => {
   const { url, children, type } = props;
 
-  const linkStyle = type == "background" ? styles["link--background"] : styles["link--no-background"]
+  const linkStyle =
+    type == "background"
+      ? styles["link--background"]
+      : styles["link--no-background"];
   return (
-    <a className={linkStyle} href={url} target="_blanc">
+    <Link className={linkStyle} href={url} target="_blanc">
       {children}
-    </a>
+    </Link>
   );
 };
 

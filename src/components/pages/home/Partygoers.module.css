@@ -22,6 +22,11 @@
   color: #081d03;
 }
 
+.heading--green,
+.heading--normal {
+  font-weight: 400;
+}
+
 .text-block {
   background-color: #f8faf7;
   border-radius: var(--border-radius-lg);

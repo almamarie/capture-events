@@ -7,6 +7,7 @@ import Summary from "./Summary";
 import EventOrganiser from "./EventOrganiser";
 import Photographer from "./Photographer";
 import Partygoers from "./Partygoers";
+import Footer from "@/components/footer/Footer";
 
 const HomePage = () => {
   return (
@@ -19,6 +20,7 @@ const HomePage = () => {
         <Photographer />
         <Partygoers />
       </main>
+      <Footer />
     </div>
   );
 };

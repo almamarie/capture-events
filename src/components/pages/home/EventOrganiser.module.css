@@ -18,6 +18,11 @@
   color: var(--color-primary);
 }
 
+.heading--green,
+.heading--normal {
+  font-weight: 400;
+}
+
 .heading--normal {
   color: #081d03;
 }
