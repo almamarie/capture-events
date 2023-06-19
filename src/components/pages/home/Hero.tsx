@@ -14,7 +14,7 @@ const Hero = () => {
           and from the comfort of your home. Be in control.{" "}
         </p>
         <div>
-          <PageLink url={"#"} type={"background"}>
+          <PageLink url={"/auth"} type={"background"}>
             Get started
           </PageLink>
         </div>

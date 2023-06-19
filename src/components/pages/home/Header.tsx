@@ -10,7 +10,7 @@ const Header = () => {
         <PageLink url={"#"} type={"no-background"}>
           Login
         </PageLink>
-        <PageLink url={"#"} type={"background"}>
+        <PageLink url={"/auth"} type={"background"}>
           Sign up
         </PageLink>
       </div>
