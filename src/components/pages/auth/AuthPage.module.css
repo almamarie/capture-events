@@ -8,17 +8,9 @@
 
   margin: 0 auto;
   margin-top: 9.7rem;
+  border: 2px solid var(--color-dark);
 
   padding: 3.4rem 5.8rem 3.8rem 5.8rem;
-
-  border: 2px solid var(--color-dark);
-}
-
-.logo {
-  color: var(--color-primary);
-
-  margin-top: 1.4rem;
-  margin-left: 4.2rem;
 }
 
 .header {

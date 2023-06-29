@@ -29,7 +29,7 @@ const AuthPage = () => {
   }
   return (
     <Fragment>
-      <h2 className={`heading--secondary ${styles.logo}`}>capture events</h2>
+      {/* <h2 className={`heading--secondary ${styles.logo}`}>capture events</h2> */}
 
       <main className={styles.main}>
         <header>
