@@ -1,7 +1,7 @@
 import Button from "@/components/ui/button/Button";
-import Image from "next/image";
 import React, { ChangeEvent, useState } from "react";
 import styles from "./CredentialsForm.module.css";
+import Image from "next/image";
 
 const CredentialsForm = () => {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
@@ -9,28 +9,33 @@ const CredentialsForm = () => {
 
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files && event.target.files[0];
+    if (file && file.size > 5 * 1024 * 1024) {
+      setError("File size exceeds the limit of 5MB.");
+      return;
+    }
     if (file) {
+      setError(null);
       setSelectedImage(file);
     }
   };
 
-  const formSubmitHandler = (event: ChangeEvent<HTMLFormElement>) => {
+  const formSubmitHandler = async (event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
       const formData = new FormData(event.target);
 
       setError(null);
 
-      const data = {
-        fullName: formData.get("fullName"),
-        email: formData.get("email"),
-        password: formData.get("password"),
-        profilePicture: selectedImage,
-      };
+      if (selectedImage === null) {
+        throw new Error("profile picture is required");
+      }
 
-      const response = credentialsSignUp(data);
+      formData.append("esternalId", "");
+      formData.append("authType", "credentials");
 
-      //   console.log(data);
+      const response = await credentialsSignUp(formData);
+
+      console.log("Response: ", response);
     } catch (error) {
       if (selectedImage === null) {
         setError("profile picture is required");
@@ -62,7 +67,6 @@ const CredentialsForm = () => {
           className={styles["file-input"]}
           type="file"
           accept=".png, .jpg, .jpeg"
-          maxLength={2097152}
           name="profilePicture"
           onChange={handleImageChange}
         />
@@ -70,7 +74,6 @@ const CredentialsForm = () => {
           click to upload profile picture
         </span>
       </label>
-
       <input
         required
         className={styles.input}
@@ -113,23 +116,19 @@ const icons = {
   ),
 };
 
-const credentialsSignUp = async (data: any) => {
-  console.log(data);
+const credentialsSignUp = async (formData: FormData) => {
   try {
     const response = await fetch(
-      `${process.env.API_BASE_URL}/credentials-signup`,
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/signup/credentials`,
       {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        body: formData,
       }
     );
 
-    const json = await response.json();
-
-    return json;
+    const data = await response.json();
+    console.log(data);
   } catch (error) {
-    throw new Error("an error occured");
+    console.log(error);
   }
 };

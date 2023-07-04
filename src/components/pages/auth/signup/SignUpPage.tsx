@@ -1,5 +1,5 @@
 "use client";
-import CredentialsForm from "./CredentialsForm";
+import CredentialsForm from "./credentials/CredentialsForm";
 import FacebookSignup from "./FacebookSignup";
 import GoogleSignup from "./GoogleSignup";
 import styles from "./SignUpPage.module.css";
