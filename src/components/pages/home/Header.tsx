@@ -1,18 +1,14 @@
-import PageLink from "@/components/ui/PageLink/PageLink";
+"use client";
 import styles from "./Header.module.css";
 import React from "react";
+import AuthButtons from "./AuthButtons";
 
-const Header = () => {
+const Header = async () => {
   return (
     <header className={styles.header}>
       <h2 className={`heading--secondary ${styles.name}`}>capture events</h2>
       <div className={styles["auth-buttons"]}>
-        <PageLink url={"#"} type={"no-background"}>
-          Login
-        </PageLink>
-        <PageLink url={"/auth"} type={"background"}>
-          Sign up
-        </PageLink>
+        <AuthButtons />
       </div>
     </header>
   );

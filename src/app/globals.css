@@ -15,6 +15,8 @@
 
   --border-color: #d7e0d6;
 
+  --overlay-background-color: rgba(78, 166, 47, 1)
+
   /* border radii */
   --border-radius-lg: 25px;
   --border-radius-m: 10px;

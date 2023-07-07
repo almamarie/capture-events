@@ -4,6 +4,7 @@ import styles from "./AuthPage.module.css";
 import Link from "next/link";
 import Button from "@/components/ui/button/Button";
 import { useRouter } from "next/navigation";
+import PageLink from "@/components/ui/PageLink/PageLink";
 
 type ActiveType = "photographer" | "partygoer" | "organiser";
 const AuthPage = () => {

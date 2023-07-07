@@ -1,7 +1,13 @@
+"use client";
 import React from "react";
 import styles from "./SocialSignup.module.css";
+import { signIn } from "next-auth/react";
 
 const GoogleSignup = () => {
+  const googleSignupHandler = () => {
+    const response = signIn("google");
+    console.log("Response: ", response);
+  };
   return (
     <svg
       className={styles["social-icon"]}
@@ -11,6 +17,7 @@ const GoogleSignup = () => {
       width="48"
       height="48"
       viewBox="0 0 48 48"
+      onClick={googleSignupHandler}
     >
       <path
         fill="#FFC107"

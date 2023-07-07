@@ -1,11 +1,21 @@
 import Button from "@/components/ui/button/Button";
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
 import styles from "./CredentialsForm.module.css";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { NavigateOptions } from "next/dist/shared/lib/app-router-context";
 
-const CredentialsForm = () => {
+interface Props {
+  setIsLoading: Dispatch<SetStateAction<Boolean>>;
+  userType: "photographer" | "partygoer" | "organiser";
+}
+
+const CredentialsForm: React.FC<Props> = (props) => {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const setIsLoading = props.setIsLoading;
+
+  const router = useRouter();
 
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files && event.target.files[0];
@@ -21,7 +31,9 @@ const CredentialsForm = () => {
 
   const formSubmitHandler = async (event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
+    // router.push(`/api/auth/signin`);
     try {
+      setIsLoading(true);
       const formData = new FormData(event.target);
 
       setError(null);
@@ -32,16 +44,20 @@ const CredentialsForm = () => {
 
       formData.append("esternalId", "");
       formData.append("authType", "credentials");
+      formData.append("userType", props.userType);
 
       const response = await credentialsSignUp(formData);
 
       console.log("Response: ", response);
+      router.push(`/api/auth/signin`);
     } catch (error) {
       if (selectedImage === null) {
         setError("profile picture is required");
       } else {
         setError("an error occured");
       }
+    } finally {
+      setIsLoading(false);
     }
   };
 
