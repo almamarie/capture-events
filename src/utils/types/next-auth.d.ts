@@ -11,6 +11,7 @@ declare module "next-auth" {
       profilePicture: string;
       authType: "credentials" | "google" | "facebook";
       userType: "photographer" | "partygoer" | "organiser";
+      provider: string;
     };
   }
 }

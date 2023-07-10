@@ -24,8 +24,8 @@ const SignUpPage: React.FC<Props> = (props) => {
       <span className={styles.or}>or</span>
 
       <div className={styles["social-icons"]}>
-        <GoogleSignup />
-        <FacebookSignup />
+        <GoogleSignup userType={props.type} />
+        <FacebookSignup userType={props.type} />
         <TwitterSignup />
       </div>
     </div>

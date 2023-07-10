@@ -1,7 +1,18 @@
 import React from "react";
 import styles from "./SocialSignup.module.css";
+import { signIn } from "next-auth/react";
+// import { cookies } from "next/headers";
 
-const FacebookSignup = () => {
+type Props = {
+  userType: "photographer" | "partygoer" | "organiser";
+};
+
+const FacebookSignup: React.FC<Props> = (props) => {
+  // const nextCookies = cookies();
+  const signupHandler = () => {
+    // nextCookies.set("newUserType", props.userType);
+    signIn("facebook");
+  };
   return (
     <svg
       className={styles["social-icon"]}
@@ -11,6 +22,7 @@ const FacebookSignup = () => {
       width="48"
       height="48"
       viewBox="0 0 48 48"
+      onClick={signupHandler}
     >
       <path fill="#039be5" d="M24 5A19 19 0 1 0 24 43A19 19 0 1 0 24 5Z"></path>
       <path

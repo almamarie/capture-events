@@ -1,8 +1,11 @@
-import { NextAuthOptions, getServerSession } from "next-auth";
+import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import FacebookProvider from "next-auth/providers/facebook";
-import { NextApiRequest, NextApiResponse } from "next";
+
+// const sequelize = new Sequelize("captureevents", "postgres", "postgres", {
+//   dialect: "postgres",
+// });
 
 export const authConfig: NextAuthOptions = {
   providers: [
@@ -56,30 +59,59 @@ export const authConfig: NextAuthOptions = {
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET as string,
     }),
   ],
+
   callbacks: {
+    async signIn({ user, account, profile, email, credentials }) {
+      console.log("account: ", account?.provider === "google");
+
+      console.log("profile", profile);
+      console.log("email", email);
+      console.log("credentials", credentials);
+
+      return true;
+    },
+
     async session({ session, token, user }) {
       session.user = token as any;
       return session;
     },
-    async jwt({ token, user, account, profile }) {
+
+    async redirect({ url, baseUrl }) {
+      console.log("Url", url);
+      console.log("baseUrl", baseUrl);
+
+      if (url === "http://localhost:3000/auth/signup/partygoer") {
+        return "http://localhost:3000/auth/signup/new-user/partygoer";
+      }
+
+      if (url === "http://localhost:3000/auth/signup/organiser") {
+        return "http://localhost:3000/auth/signup/new-user/organiser";
+      }
+
+      if (url === "http://localhost:3000/auth/signup/photographer") {
+        return "http://localhost:3000/auth/signup/new-user/photographer";
+      }
+
+      // Allows relative callback URLs
+      if (url.startsWith("/")) return `${baseUrl}${url}`;
+      // Allows callback URLs on the same origin
+      else if (new URL(url).origin === baseUrl) return url;
+      return baseUrl;
+    },
+
+    async jwt({ token, user, account, profile, isNewUser }) {
+      // console.log("Is new user: ", isNewUser);
       return { ...token, ...user, ...account, ...profile };
     },
   },
+
+  pages: {
+    newUser: "/auth/signup/google",
+  },
+
+  // events: {
+  //   async createUser(message) {
+  //     console.log("Create user: ", message);
+  //   },
+  // },
 };
-
-export async function loginIsRequiredServer(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  const session = await getServerSession(authConfig);
-  if (!session) return res.redirect("/");
-}
-
-// export async function loginIsRequiredClient() {
-//   if (typeof window !== "undefined") {
-//     const session = useSession();
-//     const router = useRouter();
-
-//     router.push("/");
-//   }
-// }
