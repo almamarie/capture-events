@@ -39,7 +39,7 @@ export const authConfig: NextAuthOptions = {
           // Any object returned will be saved in `user` property of the JWT
 
           const user = userAuth.message;
-          console.log("User: ", user);
+          // console.log("User: ", user);
           return user;
         } else {
           // If you return null then an error will be displayed advising the user to check their details.
@@ -62,11 +62,11 @@ export const authConfig: NextAuthOptions = {
 
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
-      console.log("account: ", account?.provider === "google");
+      // console.log("account: ", account?.provider === "google");
 
-      console.log("profile", profile);
-      console.log("email", email);
-      console.log("credentials", credentials);
+      // console.log("profile", profile);
+      // console.log("email", email);
+      // console.log("credentials", credentials);
 
       return true;
     },
@@ -77,8 +77,8 @@ export const authConfig: NextAuthOptions = {
     },
 
     async redirect({ url, baseUrl }) {
-      console.log("Url", url);
-      console.log("baseUrl", baseUrl);
+      // console.log("Url", url);
+      // console.log("baseUrl", baseUrl);
 
       if (url === "http://localhost:3000/auth/signup/partygoer") {
         return "http://localhost:3000/auth/signup/new-user/partygoer";

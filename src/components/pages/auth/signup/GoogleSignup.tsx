@@ -2,16 +2,13 @@
 import React from "react";
 import styles from "./SocialSignup.module.css";
 import { signIn } from "next-auth/react";
-// import { cookies } from "next/headers";
 
 type Props = {
   userType: "photographer" | "partygoer" | "organiser";
 };
 
 const GoogleSignup: React.FC<Props> = (props) => {
-  // const nextCookies = cookies();
   const googleSignupHandler = async () => {
-    // nextCookies.set("newUserType", props.userType);
     await signIn("google");
   };
   return (
